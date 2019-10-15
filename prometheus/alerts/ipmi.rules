@@ -1,0 +1,40 @@
+# alerts depending on ipmi_exporter
+---
+groups:
+- name: ipmi.rules
+  rules:
+  - alert: CoolingFan
+    expr: ipmi_fan_speed_state > 0
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      description: Host {{$labels.alias}} has non-zero fan state (0=nominal, 1=warning, 2=critical)
+      summary: Host {{ $labels.alias }} fan in slot {{ $labels.name }} has state {{ $value }}
+
+  - alert: IpmiTemperature
+    expr: ipmi_temperature_state > 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      description: Host {{ $labels.alias }} has non-zero ipmi temperature state (0=nominal, 1=warning, 2=critical)
+      summary: Host {{ $labels.alias }} sensor {{ $labels.id }}:{{ $labels.name }} state {{ $value }}
+
+  - alert: IpmiSensor
+    expr: ipmi_sensor_state{name !~ ".*Presence.*"} > 0
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      description: Host {{ $labels.alias }} has non-zero ipmi sensor state (0=nominal, 1=warning, 2=critical)
+      summary: Host {{ $labels.alias }} sensor {{ $labels.type }}:{{ $labels.name }} state {{ $value }}
+
+  - alert: IpmiVoltageCurrent
+    expr: (ipmi_voltage_state > 0) or (ipmi_current_state > 0)
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      description: Host {{ $labels.alias }} has non-zero ipmi voltaeg or current sensor state (0=nominal, 1=warning, 2=critical)
+      summary: Host {{ $labels.alias }} sensor {{ $labels.name }} state {{ $value }}

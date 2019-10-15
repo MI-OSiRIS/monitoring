@@ -1,0 +1,12 @@
+---
+groups:
+- name: apc.rules
+  rules:
+  - alert: PowerLoadStatus
+    expr: rPDULoadStatusLoadState > 1
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: PDU {{ $labels.alias }} Phase {{ $labels.rPDULoadStatusPhaseNumber }} Bank {{ $labels.rPDULoadStatusBankNumber }} load status is {{ $value }}
+      description: "APC PDU load status alert:  1 - OK, 2 - Low, 3 - Near Overload, 4 - Overload"

@@ -1,0 +1,43 @@
+# alerts depending on smart metrics provided by our collection of storage info text exporter scripts
+# smartinfo.py, enclosureinfo.py, osdinfo.py, etc
+---
+groups:
+- name: storage.rules
+  rules:
+  - alert: SmartDisk
+    expr: smart_disk_status > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: Host {{ $labels.alias }} has non-zero SMART disk status (0=nominal, 1=warning, 2=fail)
+      summary: Host {{ $labels.alias }} disk {{ $labels.device }} has SMART status {{ $value }}
+
+  - alert: SmartDiskMissing
+    expr: (count(smart_disk_status OFFSET 1w) BY (instance)) - (count(smart_disk_status) BY (instance)) > 0 
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: Host {{ $labels.alias }} count of SMART monitored disks has decreased in past week
+      summary: Host {{ $labels.alias }} is missing {{ $value }} disk(s)
+   
+  - alert: EnclosureStatus
+    expr: (enclosure_fan_status > 0) or (enclosure_power_ac_status > 0) or (enclosure_power_dc_status > 0) or (enclosure_power_status > 0) or (enclosure_voltage_status > 0) or (enclosure_voltage_under_status > 0) or (enclosure_voltage_over_status > 0)
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      description: Host {{ $labels.alias }} enclosure sensor has non-zero status (0=nominal, 1=warning, 2=fail)
+      summary: Host {{ $labels.alias }} enclosure {{ $labels.enclosure_serial }} {{ $labels.__name__ }}:{{$labels.name}} status {{ $value }}
+
+  - alert: EnclosureSlotStatus
+    expr: enclosure_slot_status > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: Host {{ $labels.alias }} enclosure slot has non-zero status (0=nominal, 1=disk missing, 2=slot fail)
+      summary: Host {{ $labels.alias }} enclosure {{ $labels.enclosure_serial }} drawer {{$labels.drawer}} slot {{$labels.drawer_slot}}} status {{ $value }}
+
+

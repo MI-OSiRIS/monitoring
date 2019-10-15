@@ -1,0 +1,31 @@
+# alerts depending on ceph exporter
+---
+groups:
+- name: ceph.rules
+  rules:
+  - alert: OsdDown
+    expr: (count(ceph_osd_up offset 5m) - count(ceph_osd_up) > 5) or (count(ceph_osd_in offset 5m) - count(ceph_osd_in) > 5)
+    for: 1s
+    labels:
+      severity: warning
+    annotations:
+      summary: Ceph cluster {{ $labels.cluster }} high rate of OSD down or out
+      description: "{{ $labels.job }} - {{ $labels.instance }}: more than 5 OSD have been marked down/out in last 5 minutes"
+  - alert: ClusterHealth
+    expr: ceph_health_status == 2
+    for: 30m
+    labels:
+      severity: critical
+    annotations:
+      summary: Ceph cluster {{ $labels.cluster }} health ERROR
+      description: "{{ $labels.job }} - {{ $labels.instance }}: ceph_health_status is 2 (ERROR)"
+  - alert: OsdLatency
+    expr: (ceph_osd_apply_latency_ms + ceph_osd_commit_latency_ms) * on (cluster,ceph_daemon) group_left(hostname)(ceph_osd_metadata) > 5000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: Ceph cluster {{ $labels.cluster }} {{ $labels.ceph_daemon }} on host {{ $labels.hostname }} high latency
+      description: "{{ $labels.job }} - {{ $labels.instance }}: apply latency + commit latency for an OSD is > 5,000ms for 30s duration"
+
+

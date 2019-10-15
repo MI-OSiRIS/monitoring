@@ -1,0 +1,82 @@
+# alerts for hardware metrics specific to Dell exporter or SNMP MIB
+---
+groups:
+- name: dell.rules
+  rules:
+  - alert: SwitchHardwareProblem
+    expr: (dellNetFanTrayOperStatus or dellNetPowerSupplyOperStatus) > 1
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: Dell Switch {{ $labels.alias }} {{ $labels.__name__ }} status {{ $value }}
+      description: "{{ $labels.alias }} reported a status of 2 (failure) or 3 (absent) for a hardware component from SNMP metric"
+
+  - alert: SwitchLoadProblem
+    expr: (dellNetCpuUtil5Sec > 70) or (dellNetCpuUtilMemUsage > 70) or (dellNetCpuFlashUsage > 70)
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: Dell Switch {{ $labels.alias }} {{ $labels.__name__ }} is {{ $value }} %
+      description: "{{ $labels.alias }} has value > 70% for an SNMP counter (dellNetCpuUtil5Sec or dellNetCpuUtilMemUsage dellNetCpuFlashUsage)"
+  
+  - alert: MissingHardDrive
+    expr: (count(dell_hw_storage_pdisk_status OFFSET 1w) BY (instance)) - (count(dell_hw_storage_pdisk_status) BY (instance)) > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: (count  by (instance) (dell_hw_storage_pdisk_status offset 7d)) - (count  by (instance) (dell_hw_storage_pdisk_status)) > 0
+      summary: On Host {{ $labels.alias }} {{ $value }} hard drive(s) have disappeared and the others are sad
+  
+  - alert: ChassisStatus
+    expr: dell_hw_chassis_status > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: Dell status is non-zero where 1 = Critical and 2 = Non-Critical 
+      summary: On Host {{ $labels.alias }} Dell chassis status for {{ $labels.component }} is {{ $value }}
+
+  - alert: PdiskStatus
+    expr: dell_hw_storage_pdisk_status > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: Dell status is non-zero where 1 = Critical and 2 = Non-Critical 
+      summary: On Host {{ $labels.alias }} Dell pdisk status is {{ $value }}
+
+  - alert: StorageControllerStatus
+    expr: dell_hw_storage_controller_status > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: Dell status is non-zero where 1 = Critical and 2 = Non-Critical 
+      summary: On Host {{ $labels.alias }} storage controller id {{ $labels.id }} status is {{ $value }}
+
+# HELP dellNetCpuFlashUsage Total flash usage in percentage. - 1.3.6.1.4.1.6027.3.26.1.4.4.1.7
+# # TYPE dellNetCpuFlashUsage gauge
+# dellNetCpuFlashUsage{dellNetProcessorDeviceIndex="1",dellNetProcessorDeviceType="2",dellNetProcessorIndex="1"} 1
+# # HELP dellNetCpuUtil5Min CPU utilization in percentage for last 5 minutes. - 1.3.6.1.4.1.6027.3.26.1.4.4.1.5
+# # TYPE dellNetCpuUtil5Min gauge
+# dellNetCpuUtil5Min{dellNetProcessorDeviceIndex="1",dellNetProcessorDeviceType="2",dellNetProcessorIndex="1"} 14
+# # HELP dellNetCpuUtil5Sec CPU utilization in percentage for last 5 seconds. - 1.3.6.1.4.1.6027.3.26.1.4.4.1.1
+# # TYPE dellNetCpuUtil5Sec gauge
+# dellNetCpuUtil5Sec{dellNetProcessorDeviceIndex="1",dellNetProcessorDeviceType="2",dellNetProcessorIndex="1"} 5
+# # HELP dellNetCpuUtilMemUsage Total Memory usage in percentage. - 1.3.6.1.4.1.6027.3.26.1.4.4.1.6
+# # TYPE dellNetCpuUtilMemUsage gauge
+# dellNetCpuUtilMemUsage{dellNetProcessorDeviceIndex="1",dellNetProcessorDeviceType="2",dellNetProcessorIndex="1"} 36
+# # HELP dellNetFanTrayOperStatus The status of the fan tray. - 1.3.6.1.4.1.6027.3.26.1.4.7.1.4
+# # TYPE dellNetFanTrayOperStatus gauge
+# dellNetFanTrayOperStatus{dellNetFanDeviceIndex="1",dellNetFanDeviceType="2",dellNetFanTrayIndex="1"} 1
+# dellNetFanTrayOperStatus{dellNetFanDeviceIndex="1",dellNetFanDeviceType="2",dellNetFanTrayIndex="2"} 1
+# dellNetFanTrayOperStatus{dellNetFanDeviceIndex="1",dellNetFanDeviceType="2",dellNetFanTrayIndex="3"} 1
+# dellNetFanTrayOperStatus{dellNetFanDeviceIndex="1",dellNetFanDeviceType="2",dellNetFanTrayIndex="4"} 1
+# dellNetFanTrayOperStatus{dellNetFanDeviceIndex="1",dellNetFanDeviceType="2",dellNetFanTrayIndex="5"} 1
+# # HELP dellNetPowerSupplyOperStatus The status of the power supply. - 1.3.6.1.4.1.6027.3.26.1.4.6.1.4
+# # TYPE dellNetPowerSupplyOperStatus gauge
+# dellNetPowerSupplyOperStatus{dellNetPowerDeviceIndex="1",dellNetPowerDeviceType="2",dellNetPowerSupplyIndex="1"} 1
+# dellNetPowerSupplyOperStatus{dellNetPowerDeviceIndex="1",dellNetPowerDeviceType="2",dellNetPowerSupplyIndex="2"} 1

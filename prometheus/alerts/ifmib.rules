@@ -1,0 +1,13 @@
+# alerts depending on SNMP IF-MIB metrics
+---
+groups:
+- name: ifmib.rules
+  rules:
+  - alert: InterfaceErrors
+    expr: irate(ifOutErrors[5m]) > 0 or irate(ifInErrors[5m]) > 0
+    for: 1s
+    labels:
+      severity: critical
+    annotations:
+      summary: Switch {{ $labels.alias }} interface errors on {{ $labels.ifDescr }} ( {{ $labels.ifAlias }} )
+      description: "Switch SNMP job {{ $labels.instance }} instant rate for ifOutErrors or ifInErrors is greater than 0"
