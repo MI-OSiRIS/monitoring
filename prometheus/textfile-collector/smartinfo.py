@@ -126,7 +126,7 @@ for disk in disks['devices']:
         sys.exit(1)
 
     status = 0 
-    for bit in range(1,7):
+    for bit in range(1,8):
         if (2**bit & rc) > 0:  # bit is set
             # print("bit {} set".format(bit))
             # hybrid types like sat+megaraid may set bit 2 (smart or other ata command failed) - ignore it
