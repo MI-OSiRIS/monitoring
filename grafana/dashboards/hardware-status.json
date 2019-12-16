@@ -1,0 +1,1162 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1570821784203,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "panels": [],
+      "repeat": "node",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "title": "Detail $node",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "ipmi_dcmi_power_consumption_watts{alias=\"$node\"}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 1,
+          "legendFormat": "Watts Main",
+          "refId": "A"
+        },
+        {
+          "expr": "label_replace(ipmi_current_amperes{alias=\"$node\"} * scalar(max(ipmi_voltage_volts{alias=\"$node\"})), \"name\", \"$1\", \"name\", \".*([0-9])\")",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 1,
+          "legendFormat": "Watts PS {{name}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Node Power Usage ",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "watt",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": 2,
+          "format": "amp",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 1,
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "id": 13,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.3.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "ipmi_fan_speed_rpm{alias=\"$node\"}",
+          "instant": false,
+          "legendFormat": "{{name}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Fan RPM",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 1,
+          "format": "rpm",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": 2,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 1,
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 14,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.3.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "ipmi_temperature_celsius{alias=\"$node\"}",
+          "instant": false,
+          "legendFormat": "{{name}} (id {{id}})",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Temperature",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 1,
+          "format": "celsius",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": 2,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "datasource": "Prometheus",
+      "description": "Dell hardware status from dellhw_exporter",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 9,
+        "x": 0,
+        "y": 11
+      },
+      "id": 17,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "pluginVersion": "6.3.2",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "#C4162A",
+            "#FADE2A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "Good",
+              "value": "0"
+            },
+            {
+              "text": "Critical",
+              "value": "1"
+            },
+            {
+              "text": "Non-Critical",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "dell_hw_chassis_status{alias=\"$node\"}",
+          "instant": true,
+          "legendFormat": "{{component}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Dell HW Status",
+      "transform": "timeseries_to_rows",
+      "type": "table"
+    },
+    {
+      "columns": [],
+      "datasource": "Prometheus",
+      "description": "Dell hardware status from dellhw_exporter",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 9,
+        "y": 11
+      },
+      "id": 18,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "pluginVersion": "6.3.2",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "#C4162A",
+            "#FADE2A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "Good",
+              "value": "0"
+            },
+            {
+              "text": "Critical",
+              "value": "1"
+            },
+            {
+              "text": "Non-Critical",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "dell_hw_chassis_memory_status{alias=\"$node\"}",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "DIMM {{memory}}",
+          "refId": "A"
+        },
+        {
+          "expr": "dell_hw_chassis_fan_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{fan}}",
+          "refId": "B"
+        },
+        {
+          "expr": "dell_hw_nic_status{instance=~\"$dell_hw_nic_changed\", alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{device}}",
+          "refId": "C"
+        },
+        {
+          "expr": "dell_hw_ps_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "PS {{id}}",
+          "refId": "D"
+        },
+        {
+          "expr": "dell_hw_cmos_batteries_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CMOS Battery {{id}}",
+          "refId": "E"
+        },
+        {
+          "expr": "dell_hw_chassis_processor_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": " {{processor}}",
+          "refId": "F"
+        },
+        {
+          "expr": "dell_hw_storage_battery_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Controller {{controller}} Batt",
+          "refId": "G"
+        },
+        {
+          "expr": "dell_hw_storage_controller_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Controller {{id}}",
+          "refId": "H"
+        },
+        {
+          "expr": "dell_hw_storage_enclosure_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Enclosure {{enclosure}}",
+          "refId": "I"
+        },
+        {
+          "expr": "dell_hw_storage_pdisk_status{alias=\"$node\"}",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Disk {{disk}}",
+          "refId": "J"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Dell HW Components",
+      "transform": "timeseries_to_rows",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Dell hardware status from dellhw_exporter",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 17,
+        "y": 11
+      },
+      "id": 44,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.3.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "count(dell_hw_chassis_status{alias=\"$node\"} > 0) by (component)",
+          "instant": false,
+          "legendFormat": "{{component}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Dell HW Problems (timeline)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 43,
+      "links": [],
+      "options": {},
+      "pageSize": 200,
+      "pluginVersion": "6.3.2",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "Good",
+              "value": "0"
+            },
+            {
+              "text": "Warning",
+              "value": "1"
+            },
+            {
+              "text": "Critical",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "ipmi_sensor_state{alias=\"$node\", type != \"Entity Presence\"} >= 0",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "{{type}} {{name}}",
+          "refId": "A"
+        },
+        {
+          "expr": "ipmi_fan_speed_state{alias=\"$node\"} >= 0",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{name}}",
+          "refId": "B"
+        },
+        {
+          "expr": "ipmi_fan_speed_state",
+          "hide": true,
+          "instant": true,
+          "legendFormat": "{{alias}} {{type}} {{name}}",
+          "refId": "C"
+        },
+        {
+          "expr": "ipmi_fan_speed_state",
+          "hide": true,
+          "instant": true,
+          "legendFormat": "{{alias}} {{type}} {{name}}",
+          "refId": "E"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "IPMI Sensor States",
+      "transform": "timeseries_to_rows",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 45,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.3.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "count(ipmi_sensor_state{alias=\"$node\", type != \"Entity Presence\"} > 0) by (type,name)",
+          "format": "time_series",
+          "instant": false,
+          "legendFormat": "{{type}} {{name}}",
+          "refId": "A"
+        },
+        {
+          "expr": "count(ipmi_fan_speed_state{alias=\"$node\"} > 0) ",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Fans",
+          "refId": "B"
+        },
+        {
+          "expr": "ipmi_fan_speed_state",
+          "hide": true,
+          "instant": true,
+          "legendFormat": "{{alias}} {{type}} {{name}}",
+          "refId": "C"
+        },
+        {
+          "expr": "ipmi_fan_speed_state",
+          "hide": true,
+          "instant": true,
+          "legendFormat": "{{alias}} {{type}} {{name}}",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "IPMI Crit/Warn Sensor States (timeline)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 47,
+      "links": [
+        {
+          "title": "Disk Details",
+          "url": "http://grafana.osris.org/d/P24a2CdZk/smart-disk-information"
+        }
+      ],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scopedVars": {
+        "node": {
+          "selected": true,
+          "text": "vai-stor-nvc01",
+          "value": "vai-stor-nvc01"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 4,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "alias",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "as",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max by (alias,device)(smart_disk_status{alias=\"$node\"})  * on (alias,device) group_left (serial)(smart_disk_info)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "SMART Storage Devices",
+      "transform": "table",
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 20,
+  "style": "dark",
+  "tags": [
+    "hardware"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "um-grafana",
+          "value": "um-grafana"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(ipmi_bmc_info, alias)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Node Details",
+        "multi": true,
+        "name": "node",
+        "options": [],
+        "query": "label_values(ipmi_bmc_info, alias)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Hardware Status",
+  "uid": "0rdTuDvZk"
+}

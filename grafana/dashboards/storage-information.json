@@ -1,0 +1,1849 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1575516695855,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 7,
+      "panels": [],
+      "title": "Status Roundup",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "description": "",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 17,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            },
+            {
+              "text": "WARN",
+              "value": "3"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "Description",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Metric",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max(smart_disk_status) by (alias, device) * on (alias, device) group_left (serial)(smart_disk_info)> 0",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} - {{device}} - {{serial}}",
+          "refId": "A"
+        },
+        {
+          "expr": "(dell_hw_storage_pdisk_status > 0) + 1",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} - Dell cntrl{{controller}} disk {{disk}}",
+          "refId": "B"
+        },
+        {
+          "expr": "(dell_hw_storage_vdisk_status > 0) + 1",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} - Dell vdisk {{vdisk}}",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Failed Devices",
+      "transform": "timeseries_to_rows",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 11,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max without (job, site, cluster)(ceph_osd_device_info) * on (instance,device) group_left  (Value)(smart_disk_status) ",
+          "format": "table",
+          "hide": true,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "B"
+        },
+        {
+          "expr": "max without (job, site,cluster)(ceph_osd_device_info) * on (instance,device) group_left  (Value)(smart_disk_status) > 0",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Failed Devices by OSD",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 21,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max(smart_disk_status) by (alias, device) * on (alias, device) group_left (serial)(smart_disk_info) * on (alias,serial) group_left ( enclosure_slot, enclosure_serial,drawer, drawer_slot)(enclosure_drive_info) >0",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Failed Devices by Enclosure",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 26,
+      "links": [
+        {
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 9,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Slots",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Temp",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #B",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Fans",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #C",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Voltage",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #D",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Power",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #E",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Overall",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": false,
+          "linkTargetBlank": true,
+          "linkTooltip": "Details ${__cell_1}",
+          "linkUrl": "",
+          "mappingType": 1,
+          "pattern": "Value #F",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": true,
+          "linkTooltip": "Enclosure Details",
+          "linkUrl": "https://grafana.osris.org/d/dfDABcFWz/storage-enclosure-details?var-host=${__cell_1}&var-serial=All",
+          "mappingType": 1,
+          "pattern": "alias",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max(enclosure_slot_status) by (alias, enclosure_wwn, enclosure_serial)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        },
+        {
+          "expr": "max(enclosure_temp_status) by (alias, enclosure_wwn, enclosure_serial)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "B"
+        },
+        {
+          "expr": "max(enclosure_fan_status) by (alias, enclosure_wwn, enclosure_serial)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "C"
+        },
+        {
+          "expr": "max(enclosure_voltage_status) by (alias, enclosure_wwn, enclosure_serial)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "D"
+        },
+        {
+          "expr": "max(enclosure_power_status) by (alias, enclosure_wwn, enclosure_serial)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "E"
+        },
+        {
+          "expr": "max(enclosure_status) by (alias, enclosure_wwn, enclosure_serial)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "F"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Enclosure Hardware",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "description": "OSD marked down along with all known devices from LVM metadata.  If an OSD is here but has no devices with problems it is either down for other reasons (marked down, network, etc) or one of the devices has gone missing.  ",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 30,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "hidden",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "instance",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max without (job, site, cluster)(ceph_osd_device_info) * on (instance,device) group_left  (Value)(smart_disk_status) ",
+          "format": "table",
+          "hide": true,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "B"
+        },
+        {
+          "expr": "max without (job, site,cluster)(ceph_osd_device_info) * on (ceph_daemon) group_left ()(ceph_osd_up) ==0",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{}} ",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Down OSD device list ",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 5,
+      "panels": [],
+      "title": "Warning Attributes",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "smart_disk_lifetime_percent * on (instance,device) group_left(model,serial)(smart_disk_info) <= 20",
+          "legendFormat": "{{alias}} {{device}} {{model}} {{serial}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "SSD/NVMe Near EOL (20%)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "SMART attributes which may indicate failure if non-zero.  Some, such as reallocated sectors, may not be an issue if they are not increasing rapidly.  Some of these attributes may additionally trip SMART to indicate failure status when they cross certain thresholds.  ",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/rate/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "smart_disk_attr_total * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "{{name}} -- {{alias}} {{device}} {{model}} {{serial}}",
+          "refId": "A"
+        },
+        {
+          "expr": "rate(smart_disk_attr_total[5m]) * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "rate {{name}} -- {{alias}} {{device}} {{model}} {{serial}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Non-Zero Failure Attributes (rate is inverted)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 14,
+      "panels": [],
+      "repeat": "host",
+      "scopedVars": {
+        "host": {
+          "selected": true,
+          "text": "msu-stor03",
+          "value": "msu-stor03"
+        }
+      },
+      "title": "Host Details $host",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "hiddenSeries": false,
+      "id": 12,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "host": {
+          "selected": true,
+          "text": "msu-stor03",
+          "value": "msu-stor03"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/rate/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "smart_disk_temperature_celsius{alias=\"$host\"} * on (instance,device) group_left(model,serial)(smart_disk_info) ",
+          "legendFormat": "{{device}} {{model}} {{serial}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk Temperatures",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "celsius",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 16,
+      "options": {
+        "displayMode": "gradient",
+        "fieldOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 20
+              }
+            ],
+            "unit": "percent"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.5.1",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "host": {
+          "selected": true,
+          "text": "msu-stor03",
+          "value": "msu-stor03"
+        }
+      },
+      "targets": [
+        {
+          "expr": "smart_disk_lifetime_percent{alias=\"$host\"} * on (instance,device) group_left(model,serial)(smart_disk_info) ",
+          "legendFormat": "{{device}} {{model}} {{serial}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "LIfetime Remaining",
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Rate of change is inverted ",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 15,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 2,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "attributes",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "attributes": {
+          "selected": false,
+          "text": "offline_uncorrectable",
+          "value": "offline_uncorrectable"
+        },
+        "host": {
+          "selected": true,
+          "text": "msu-stor03",
+          "value": "msu-stor03"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/rate/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"} * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "{{device}} {{model}} {{serial}}",
+          "refId": "A"
+        },
+        {
+          "expr": "rate(smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"}[5m]) * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "rate {{device}}  {{model}} {{serial}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Attribute $attributes (non-zero only)",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Rate of change is inverted ",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 31,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 2,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1575516695855,
+      "repeatPanelId": 15,
+      "scopedVars": {
+        "attributes": {
+          "selected": false,
+          "text": "uncorrectable_error_cnt",
+          "value": "uncorrectable_error_cnt"
+        },
+        "host": {
+          "selected": true,
+          "text": "msu-stor03",
+          "value": "msu-stor03"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/rate/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"} * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "{{device}} {{model}} {{serial}}",
+          "refId": "A"
+        },
+        {
+          "expr": "rate(smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"}[5m]) * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "rate {{device}}  {{model}} {{serial}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Attribute $attributes (non-zero only)",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Rate of change is inverted ",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 53
+      },
+      "hiddenSeries": false,
+      "id": 32,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 2,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1575516695855,
+      "repeatPanelId": 15,
+      "scopedVars": {
+        "attributes": {
+          "selected": false,
+          "text": "command_timeout",
+          "value": "command_timeout"
+        },
+        "host": {
+          "selected": true,
+          "text": "msu-stor03",
+          "value": "msu-stor03"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/rate/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"} * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "{{device}} {{model}} {{serial}}",
+          "refId": "A"
+        },
+        {
+          "expr": "rate(smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"}[5m]) * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "rate {{device}}  {{model}} {{serial}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Attribute $attributes (non-zero only)",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Rate of change is inverted ",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 53
+      },
+      "hiddenSeries": false,
+      "id": 33,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 2,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1575516695855,
+      "repeatPanelId": 15,
+      "scopedVars": {
+        "attributes": {
+          "selected": false,
+          "text": "reallocated_sector_count",
+          "value": "reallocated_sector_count"
+        },
+        "host": {
+          "selected": true,
+          "text": "msu-stor03",
+          "value": "msu-stor03"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/rate/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"} * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "{{device}} {{model}} {{serial}}",
+          "refId": "A"
+        },
+        {
+          "expr": "rate(smart_disk_attr_total{alias=\"$host\", name=\"$attributes\"}[5m]) * on (instance,device) group_left(model,serial)(smart_disk_info) > 0",
+          "legendFormat": "rate {{device}}  {{model}} {{serial}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Attribute $attributes (non-zero only)",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 21,
+  "style": "dark",
+  "tags": [
+    "hardware",
+    "disk"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "um-stor-lnvm01",
+          "value": "um-stor-lnvm01"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(smart_disk_status, alias)",
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "allhosts",
+        "options": [
+          {
+            "selected": true,
+            "text": "um-stor-lnvm01",
+            "value": "um-stor-lnvm01"
+          }
+        ],
+        "query": "label_values(smart_disk_status, alias)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "msu-stor03",
+          "value": [
+            "msu-stor03"
+          ]
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(smart_disk_status, alias)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Detail Hosts",
+        "multi": true,
+        "name": "host",
+        "options": [],
+        "query": "label_values(smart_disk_status, alias)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(smart_disk_attr_total, name)",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "attributes",
+        "options": [],
+        "query": "label_values(smart_disk_attr_total, name)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "datasource": "Prometheus",
+        "filters": [],
+        "hide": 0,
+        "label": "",
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Storage Information",
+  "uid": "P24a2CdZk"
+}

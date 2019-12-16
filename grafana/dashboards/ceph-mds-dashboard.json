@@ -1,0 +1,1100 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1571257927243,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 29,
+      "panels": [],
+      "title": "Stats",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 41,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(irate(ceph_mds_server_req_mknod_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_mknod_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "mknod_latency",
+          "refId": "1"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_lookupsnap_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_lookupsnap_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "lookupsnap_latency",
+          "refId": "2"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_lookupino_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_lookupino_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "lookupino_latency",
+          "refId": "3"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_rmxattr_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_rmxattr_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "rmxattr_latency",
+          "refId": "4"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_open_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_open_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "open_latency",
+          "refId": "5"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_lookupparent_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_lookupparent_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "lookupparent_latency",
+          "refId": "6"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_create_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_create_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "create_latency",
+          "refId": "7"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_renamesnap_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_renamesnap_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "renamesnap_latency",
+          "refId": "8"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_mkdir_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_mkdir_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "mkdir_latency",
+          "refId": "9"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_setdirlayout_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_setdirlayout_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "setdirlayout_latency",
+          "refId": "10"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_lssnap_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_lssnap_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "lssnap_latency",
+          "refId": "11"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_setfilelock_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_setfilelock_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "setfilelock_latency",
+          "refId": "12"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_setattr_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_setattr_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "setattr_latency",
+          "refId": "13"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_symlink_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_symlink_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "symlink_latency",
+          "refId": "14"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_readdir_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_readdir_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "readdir_latency",
+          "refId": "15"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_lookup_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_lookup_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "lookup_latency",
+          "refId": "16"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_unlink_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_unlink_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "unlink_latency",
+          "refId": "17"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_link_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_link_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "link_latency",
+          "refId": "18"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_rmsnap_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_rmsnap_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "rmsnap_latency",
+          "refId": "19"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_getattr_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_getattr_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "getattr_latency",
+          "refId": "20"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_rmdir_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_rmdir_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "rmdir_latency",
+          "refId": "21"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_lookupname_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_lookupname_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "lookupname_latency",
+          "refId": "22"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_lookuphash_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_lookuphash_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "lookuphash_latency",
+          "refId": "23"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_setlayout_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_setlayout_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "setlayout_latency",
+          "refId": "24"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_mksnap_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_mksnap_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "mksnap_latency",
+          "refId": "25"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_getfilelock_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_getfilelock_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "getfilelock_latency",
+          "refId": "26"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_rename_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_rename_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "rename_latency",
+          "refId": "27"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_req_setxattr_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_server_req_setxattr_latency_count{cluster=\"$cluster\"}[5m]) >= 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "setxattr_latency",
+          "refId": "28"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_reply_latency_sum{cluster=\"$cluster\"}[5m]) / irate(ceph_mds_reply_latency_count{cluster=\"$cluster\"}[5m]) >=0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "reply_latency",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency Metrics",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 40,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(irate(ceph_mds_request{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "mds_request",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_handle_slave_request{cluster=\"$cluster\"}[5m]))",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "slave_request",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(irate(ceph_mds_server_handle_client_request{cluster=\"$cluster\"}[5m]))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "client_request",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MDS Requests / s",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 6
+      },
+      "id": 81,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(irate(ceph_purge_queue_pq_executed{cluster=\"$cluster\"}[5m]))",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Executed Rate",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(ceph_purge_queue_pq_executing{cluster=\"$cluster\"})",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Tasks in Flight",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(ceph_purge_queue_pq_executing_ops{cluster=\"$cluster\"})",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Ops in Flight",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Purge Queue Ops",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "id": 39,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "label_replace(\n  {__name__=~\"ceph_mds_cache.*\"}, \"__name__\", \"$2\", \"__name__\", \"(ceph_mds_cache_)(.*)\"\n)\n",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{__name__}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MDS Cache",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 11
+      },
+      "id": 100,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(ceph_mds_log_jlat_sum{cluster=\"$cluster\"}[5m]) / rate(ceph_mds_log_jlat_count{cluster=\"$cluster\"}[5m]) > 0) ",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Latency",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MDS Log Journal Flush Latency",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 42,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Events Added / Second",
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(ceph_mds_log_evadd{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Events Added",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(rate(ceph_mds_log_replayed{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Events Replayed",
+          "refId": "E"
+        },
+        {
+          "expr": "sum(rate(ceph_mds_log_evtrm{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Events Trimmed",
+          "refId": "G"
+        },
+        {
+          "expr": "sum(rate(ceph_mds_log_evexg{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Events Expiring",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(rate(ceph_mds_log_segadd{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Segments Added",
+          "refId": "D"
+        },
+        {
+          "expr": "sum(rate(ceph_mds_log_segtrm{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Segments Trimmed",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(rate(ceph_mds_log_segexg{cluster=\"$cluster\"}[5m]))\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "Segments Expired",
+          "refId": "F"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MDS Log",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 20,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "production",
+          "value": "production"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(cluster)",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "cluster",
+        "options": [
+          {
+            "selected": true,
+            "text": "production",
+            "value": "production"
+          }
+        ],
+        "query": "label_values(cluster)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "auto": true,
+        "auto_count": 10,
+        "auto_min": "10s",
+        "current": {
+          "text": "30s",
+          "value": "30s"
+        },
+        "hide": 0,
+        "label": null,
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": false,
+            "text": "5s",
+            "value": "5s"
+          },
+          {
+            "selected": false,
+            "text": "10s",
+            "value": "10s"
+          },
+          {
+            "selected": true,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "5s,10s,30s,1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Ceph MDS Dashboard",
+  "uid": "hf0ktJtiz"
+}

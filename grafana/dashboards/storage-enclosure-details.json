@@ -1,0 +1,1219 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1567021044541,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "panels": [],
+      "repeat": "serial",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "title": "Status $serial",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 14,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 5,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "hidden",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Type",
+          "colorMode": null,
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "enclosure_name",
+          "preserveFormat": false,
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": []
+        },
+        {
+          "alias": "Serial",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "enclosure_serial",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "WWN",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "enclosure_wwn",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max by (alias,enclosure_name, enclosure_serial, enclosure_wwn) (enclosure_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Info",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 9,
+        "x": 0,
+        "y": 4
+      },
+      "id": 2,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 4,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Slot",
+          "colorMode": null,
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "enclosure_slot",
+          "preserveFormat": false,
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "number",
+          "unit": "short",
+          "valueMaps": []
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max by (enclosure_slot, drawer_slot, drawer) (enclosure_slot_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Enclosure Slots",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 9,
+        "y": 4
+      },
+      "id": 6,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Slot",
+          "colorMode": null,
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "enclosure_slot",
+          "preserveFormat": false,
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "number",
+          "unit": "short",
+          "valueMaps": []
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max by (name) (enclosure_fan_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Enclosure Fans",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 4
+      },
+      "id": 13,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "DC",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "Value #C",
+          "preserveFormat": false,
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "CRIT",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "AC",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #B",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "CRIT",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max by (name) (enclosure_power_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        },
+        {
+          "expr": "max by (name) (enclosure_power_ac_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "B"
+        },
+        {
+          "expr": "max by (name) (enclosure_power_dc_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Enclosure Power ",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 0,
+        "y": 10
+      },
+      "id": 4,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Slot",
+          "colorMode": null,
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "enclosure_slot",
+          "preserveFormat": false,
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "number",
+          "unit": "short",
+          "valueMaps": []
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max by (name) (enclosure_temp_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Enclosure Temp Sensors",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "Prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 11,
+        "x": 8,
+        "y": 10
+      },
+      "id": 8,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "Status",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Volt Over",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "Value #B",
+          "preserveFormat": false,
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "Volt Under",
+          "colorMode": "cell",
+          "colors": [
+            "#37872D",
+            "#FADE2A",
+            "#C4162A"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #C",
+          "thresholds": [
+            "1",
+            "2"
+          ],
+          "type": "string",
+          "unit": "short",
+          "valueMaps": [
+            {
+              "text": "OK",
+              "value": "0"
+            },
+            {
+              "text": "WARN",
+              "value": "1"
+            },
+            {
+              "text": "FAIL",
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "max by (name) (enclosure_voltage_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "A"
+        },
+        {
+          "expr": "max by (name) (enclosure_voltage_under_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "B"
+        },
+        {
+          "expr": "max by (name) (enclosure_voltage_over_status{alias=\"$host\"})",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{alias}} {{device}} ",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Enclosure Voltage",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "id": 11,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "enclosure_fan_speed_rpm{alias=\"$host\"}",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{name}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Fan Speeds (RPM)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "serial": {
+          "selected": false,
+          "text": "SVC_HPTPHL2",
+          "value": "SVC_HPTPHL2"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "enclosure_temp_celsius{alias=\"$host\"}",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{name}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Enclosure Temps (C)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "celsius",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 19,
+  "style": "dark",
+  "tags": [
+    "disk",
+    "enclosure"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "um-stor04",
+          "value": "um-stor04"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(enclosure_status, alias)",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "host",
+        "options": [],
+        "query": "label_values(enclosure_status, alias)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "SVC_CY55SD2",
+          "value": "SVC_CY55SD2"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(enclosure_status{alias=\"$host\"}, enclosure_serial)",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "serial",
+        "options": [],
+        "query": "label_values(enclosure_status{alias=\"$host\"}, enclosure_serial)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Storage Enclosure Details",
+  "uid": "dfDABcFWz"
+}

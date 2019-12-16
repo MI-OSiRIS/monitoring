@@ -1,0 +1,1016 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1563890770729,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {},
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(ceph_bluefs_slow_used_bytes{cluster=\"$cluster\", ceph_daemon=~\"$daemon\"})  *on (ceph_daemon) group_left(hostname)(ceph_osd_metadata{cluster=\"$cluster\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ceph_daemon}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Slow DB Used (by OSD)",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "current"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 2,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 4,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {},
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {}
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum((ceph_bluefs_slow_used_bytes{cluster=\"$cluster\"}) *on (ceph_daemon) group_left(hostname)(ceph_osd_metadata{cluster=\"$cluster\"})) by (hostname)",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "{{hostname}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Slow DB Used (by host)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 5,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {},
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {}
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum((ceph_bluefs_db_used_bytes{cluster=\"$cluster\"}) *on (ceph_daemon) group_left(hostname)(ceph_osd_metadata{cluster=\"$cluster\"})) by (hostname)",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "{{hostname}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total DB Used (by host)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 6,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {},
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {}
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum((ceph_bluefs_wal_used_bytes{cluster=\"$cluster\"}) *on (ceph_daemon) group_left(hostname)(ceph_osd_metadata{cluster=\"$cluster\"})) by (hostname)\n",
+          "format": "time_series",
+          "interval": "$interval",
+          "intervalFactor": 1,
+          "legendFormat": "{{hostname}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "WAL Used (by host, often zero)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "production",
+          "value": "production"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(cluster)",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "cluster",
+        "options": [
+          {
+            "selected": true,
+            "text": "production",
+            "value": "production"
+          }
+        ],
+        "query": "label_values(cluster)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "um-stor01.osris.org",
+          "value": "um-stor01.osris.org"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(ceph_osd_metadata{cluster=\"$cluster\"}, hostname)",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "hostname",
+        "options": [
+          {
+            "selected": false,
+            "text": "um-stor03.osris.org",
+            "value": "um-stor03.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "wsu-stor01.osris.org",
+            "value": "wsu-stor01.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "msu-stor01.osris.org",
+            "value": "msu-stor01.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "um-stor02.osris.org",
+            "value": "um-stor02.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "msu-stor03.osris.org",
+            "value": "msu-stor03.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "wsu-stor03.osris.org",
+            "value": "wsu-stor03.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "msu-stor02.osris.org",
+            "value": "msu-stor02.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "wsu-stor02.osris.org",
+            "value": "wsu-stor02.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "msu-stor04.osris.org",
+            "value": "msu-stor04.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "um-stor04.osris.org",
+            "value": "um-stor04.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "vai-stor-nvc03.osris.org",
+            "value": "vai-stor-nvc03.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "vai-stor-nvc01.osris.org",
+            "value": "vai-stor-nvc01.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "vai-stor-nvc02.osris.org",
+            "value": "vai-stor-nvc02.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "um-stor06.osris.org",
+            "value": "um-stor06.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "msu-stor05.osris.org",
+            "value": "msu-stor05.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "um-stor05.osris.org",
+            "value": "um-stor05.osris.org"
+          },
+          {
+            "selected": true,
+            "text": "um-stor01.osris.org",
+            "value": "um-stor01.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "wsu-stor04.osris.org",
+            "value": "wsu-stor04.osris.org"
+          },
+          {
+            "selected": false,
+            "text": "wsu-stor05.osris.org",
+            "value": "wsu-stor05.osris.org"
+          }
+        ],
+        "query": "label_values(ceph_osd_metadata{cluster=\"$cluster\"}, hostname)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(ceph_osd_metadata{cluster=\"$cluster\", hostname=\"$hostname\"}, ceph_daemon)",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "daemon",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "osd.720",
+            "value": "osd.720"
+          },
+          {
+            "selected": false,
+            "text": "osd.721",
+            "value": "osd.721"
+          },
+          {
+            "selected": false,
+            "text": "osd.722",
+            "value": "osd.722"
+          },
+          {
+            "selected": false,
+            "text": "osd.723",
+            "value": "osd.723"
+          },
+          {
+            "selected": false,
+            "text": "osd.724",
+            "value": "osd.724"
+          },
+          {
+            "selected": false,
+            "text": "osd.725",
+            "value": "osd.725"
+          },
+          {
+            "selected": false,
+            "text": "osd.726",
+            "value": "osd.726"
+          },
+          {
+            "selected": false,
+            "text": "osd.727",
+            "value": "osd.727"
+          },
+          {
+            "selected": false,
+            "text": "osd.728",
+            "value": "osd.728"
+          },
+          {
+            "selected": false,
+            "text": "osd.729",
+            "value": "osd.729"
+          },
+          {
+            "selected": false,
+            "text": "osd.730",
+            "value": "osd.730"
+          },
+          {
+            "selected": false,
+            "text": "osd.731",
+            "value": "osd.731"
+          },
+          {
+            "selected": false,
+            "text": "osd.732",
+            "value": "osd.732"
+          },
+          {
+            "selected": false,
+            "text": "osd.733",
+            "value": "osd.733"
+          },
+          {
+            "selected": false,
+            "text": "osd.734",
+            "value": "osd.734"
+          },
+          {
+            "selected": false,
+            "text": "osd.735",
+            "value": "osd.735"
+          },
+          {
+            "selected": false,
+            "text": "osd.736",
+            "value": "osd.736"
+          },
+          {
+            "selected": false,
+            "text": "osd.737",
+            "value": "osd.737"
+          },
+          {
+            "selected": false,
+            "text": "osd.738",
+            "value": "osd.738"
+          },
+          {
+            "selected": false,
+            "text": "osd.739",
+            "value": "osd.739"
+          },
+          {
+            "selected": false,
+            "text": "osd.740",
+            "value": "osd.740"
+          },
+          {
+            "selected": false,
+            "text": "osd.741",
+            "value": "osd.741"
+          },
+          {
+            "selected": false,
+            "text": "osd.742",
+            "value": "osd.742"
+          },
+          {
+            "selected": false,
+            "text": "osd.743",
+            "value": "osd.743"
+          },
+          {
+            "selected": false,
+            "text": "osd.744",
+            "value": "osd.744"
+          },
+          {
+            "selected": false,
+            "text": "osd.745",
+            "value": "osd.745"
+          },
+          {
+            "selected": false,
+            "text": "osd.746",
+            "value": "osd.746"
+          },
+          {
+            "selected": false,
+            "text": "osd.747",
+            "value": "osd.747"
+          },
+          {
+            "selected": false,
+            "text": "osd.748",
+            "value": "osd.748"
+          },
+          {
+            "selected": false,
+            "text": "osd.749",
+            "value": "osd.749"
+          },
+          {
+            "selected": false,
+            "text": "osd.750",
+            "value": "osd.750"
+          },
+          {
+            "selected": false,
+            "text": "osd.751",
+            "value": "osd.751"
+          },
+          {
+            "selected": false,
+            "text": "osd.752",
+            "value": "osd.752"
+          },
+          {
+            "selected": false,
+            "text": "osd.753",
+            "value": "osd.753"
+          },
+          {
+            "selected": false,
+            "text": "osd.754",
+            "value": "osd.754"
+          },
+          {
+            "selected": false,
+            "text": "osd.755",
+            "value": "osd.755"
+          },
+          {
+            "selected": false,
+            "text": "osd.756",
+            "value": "osd.756"
+          },
+          {
+            "selected": false,
+            "text": "osd.757",
+            "value": "osd.757"
+          },
+          {
+            "selected": false,
+            "text": "osd.758",
+            "value": "osd.758"
+          },
+          {
+            "selected": false,
+            "text": "osd.759",
+            "value": "osd.759"
+          },
+          {
+            "selected": false,
+            "text": "osd.760",
+            "value": "osd.760"
+          },
+          {
+            "selected": false,
+            "text": "osd.761",
+            "value": "osd.761"
+          },
+          {
+            "selected": false,
+            "text": "osd.762",
+            "value": "osd.762"
+          },
+          {
+            "selected": false,
+            "text": "osd.763",
+            "value": "osd.763"
+          },
+          {
+            "selected": false,
+            "text": "osd.764",
+            "value": "osd.764"
+          },
+          {
+            "selected": false,
+            "text": "osd.765",
+            "value": "osd.765"
+          },
+          {
+            "selected": false,
+            "text": "osd.766",
+            "value": "osd.766"
+          },
+          {
+            "selected": false,
+            "text": "osd.767",
+            "value": "osd.767"
+          },
+          {
+            "selected": false,
+            "text": "osd.768",
+            "value": "osd.768"
+          },
+          {
+            "selected": false,
+            "text": "osd.769",
+            "value": "osd.769"
+          },
+          {
+            "selected": false,
+            "text": "osd.770",
+            "value": "osd.770"
+          },
+          {
+            "selected": false,
+            "text": "osd.771",
+            "value": "osd.771"
+          },
+          {
+            "selected": false,
+            "text": "osd.772",
+            "value": "osd.772"
+          },
+          {
+            "selected": false,
+            "text": "osd.773",
+            "value": "osd.773"
+          },
+          {
+            "selected": false,
+            "text": "osd.774",
+            "value": "osd.774"
+          },
+          {
+            "selected": false,
+            "text": "osd.775",
+            "value": "osd.775"
+          },
+          {
+            "selected": false,
+            "text": "osd.776",
+            "value": "osd.776"
+          },
+          {
+            "selected": false,
+            "text": "osd.777",
+            "value": "osd.777"
+          },
+          {
+            "selected": false,
+            "text": "osd.778",
+            "value": "osd.778"
+          },
+          {
+            "selected": false,
+            "text": "osd.779",
+            "value": "osd.779"
+          }
+        ],
+        "query": "label_values(ceph_osd_metadata{cluster=\"$cluster\", hostname=\"$hostname\"}, ceph_daemon)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "auto": true,
+        "auto_count": 10,
+        "auto_min": "10s",
+        "current": {
+          "text": "10s",
+          "value": "10s"
+        },
+        "hide": 0,
+        "label": null,
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": true,
+            "text": "10s",
+            "value": "10s"
+          },
+          {
+            "selected": false,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "10s,30s,1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Ceph OSD DB/WAL Space",
+  "uid": "BXbsUsZZk"
+}
